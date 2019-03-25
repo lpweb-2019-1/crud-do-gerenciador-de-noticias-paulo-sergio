@@ -12,8 +12,7 @@ export class AppComponent {
   titulo = null;
   conteudo = null;
   data = null;
-  sim = null;
-  nao = null;
+  noticiapublicada = false;
   categoria = null;
   tags = null;
   editoria = null;
@@ -25,6 +24,7 @@ export class AppComponent {
       this.editar.titulo = this.titulo
       this.editar.conteudo = this.conteudo
       this.editar.datapublicacao = this.data
+      this.noticiapublicada = this.noticiapublicada
       this.editar.categoria = this.categoria
       this.editar.tags = this.tags
       this.editar.editoria = this.editoria
@@ -33,21 +33,19 @@ export class AppComponent {
       id: Math.random(),
       titulo: this.titulo,
       conteudo: this.conteudo,
+      noticiapublicada: this.noticiapublicada,
       data: this.data,
-      sim: this.sim,
-      nao: this.nao,
       categoria: this.categoria,
       tags: this.tags,
       editoria: this.editoria,
-      visivel: false
+      visivel: false,
     };
     this.noticias.push(noticia);
   }
   this.titulo = null;
   this.conteudo = null;
   this.data = null;
-  this.sim = null;
-  this.nao = null;
+  this.noticiapublicada = false;
   this.categoria;
   this.editoria;
   this.editar = null;
@@ -66,7 +64,7 @@ export class AppComponent {
     this.categoria = noticia.categoria
     this.tags = noticia.tags
     this.editoria = noticia.editoria
-    console.log(noticia)
+
   }
 
   mostrar(noticia) {
