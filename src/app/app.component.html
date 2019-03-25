@@ -5,20 +5,21 @@
   <ul>
     <li *ngFor="let noticia of noticias">
       <p (click)="mostrar(noticia)">{{ noticia.titulo }}</p>
-      <p *ngIf="noticia.visivel">
+      <div *ngIf="noticia.visivel">
         Conteudo:<br>
         {{ noticia.conteudo }}<br>
         Data de Publicação: {{ noticia.data }}<br>
         Categoria: {{ noticia.categoria }}<br>
         Tags: {{ noticia.tags }}<br>
         Editoria: {{ noticia.editoria }}<br>
-        {{ noticia.sim }}
-        {{ noticia.nao }}
+        <div *ngIf="noticia.noticiapublicada">
+          Noticia ja publicada
+        </div>
         <br>
         <button (click)="fechar(noticia)">Fechar</button>
         <button (click)="excluir(noticia)">Excluir</button>
         <button id="editar" translate="yes" *ngIf="noticia.visivel" (click)="iseditar(noticia)">Editar</button>
-      </p>
+      </div>
     </li>
   </ul>
 </div>
@@ -38,11 +39,8 @@
       <input id="date" type="date" name="Data" [(ngModel)]="data" required>
   </div>
   <div>
-    <h2>A noticia foi publicada?</h2>
-    <label for="Sim">Sim</label>
-    <input type="checkbox" name="sim" value="Sim" [(ngModel)]="sim"><br>
-    <label for="Sim">Não</label>
-    <input type="checkbox" name="não" value="Não" [(ngModel)]="nao"><br>
+    <label for="noticiapublicada"></label>
+    <input type="checkbox" name="noticiapublicada" [(ngModel)]="noticiapublicada">A noticia foi publicada?<br>
   </div>
   <div>
     <label for="categoria">Categoria</label><br>
@@ -72,7 +70,7 @@
 
   </div>
   <div>
-    <button type="submit">Salvar</button>
+    <button type="submit" [disabled]="!cadastro.form.valid" >Salvar</button>
     <button type="reset" formnovalidate>Limpar</button>
   </div>
 </form>
