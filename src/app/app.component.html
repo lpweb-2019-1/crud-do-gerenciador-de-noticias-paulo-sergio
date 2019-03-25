@@ -72,7 +72,7 @@
 
   </div>
   <div>
-    <button type="submit">Salvar</button>
+    <button type="submit" [disabled]="!cadastro.form.valid" >Salvar</button>
     <button type="reset" formnovalidate>Limpar</button>
   </div>
 </form>
