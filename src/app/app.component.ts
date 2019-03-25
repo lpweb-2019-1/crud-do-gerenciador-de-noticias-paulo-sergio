@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { renderComponent } from '@angular/core/src/render3';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,11 @@ export class AppComponent {
   titulo = null;
   conteudo = null;
   data = null;
+  sim = null;
+  nao = null;
+  categoria = null;
+  tags = null;
+  editoria = null;
 
   salvar() {
     const noticia = {
@@ -17,12 +23,29 @@ export class AppComponent {
       titulo: this.titulo,
       conteudo: this.conteudo,
       data: this.data,
+      sim: this.sim,
+      nao: this.nao,
+      categoria: this.categoria,
+      tags: this.tags,
+      editoria: this.editoria,
       visivel: false
     };
     this.noticias.push(noticia);
     this.titulo = null;
     this.conteudo = null;
     this.data = null;
+    this.sim = null;
+    this.nao = null;
+    this.categoria;
+    this.editoria;
+  }
+
+  excluir(titulo) {
+    var r = confirm("Você realmente que excluir esse item?");
+    if (r == true){
+      this.noticias.splice(titulo, 1);
+    } else {
+    };
   }
 
   mostrar(noticia) {
@@ -33,14 +56,5 @@ export class AppComponent {
     noticia.visivel = false;
   }
 
-  estahPublicada (): boolean {
-    if (!this.data) {
-      return false;
-  }
-    const dataAtual = new Date();
-  if (this.data > dataAtual) {
-      return false;
-  }
-    return true;
-    }
+  
 }
