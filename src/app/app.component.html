@@ -14,10 +14,10 @@
         Editoria: {{ noticia.editoria }}<br>
         {{ noticia.sim }}
         {{ noticia.nao }}
-        <br> -------------
         <br>
         <button (click)="fechar(noticia)">Fechar</button>
-        <button (click)="excluir(titulo)">Excluir</button>
+        <button (click)="excluir(noticia)">Excluir</button>
+        <button id="editar" translate="yes" *ngIf="noticia.visivel" (click)="iseditar(noticia)">Editar</button>
       </p>
     </li>
   </ul>
